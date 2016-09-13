@@ -1,0 +1,60 @@
+<html>
+<head>
+<style>
+  body {
+    background-color: #d3d3d3;
+  }
+  .row {
+    height: 10px;
+  }
+  .active, .inactive {
+    height: 8px;
+    width: 8px;
+    margin: 1px;
+    display: inline-block;
+  }
+  .active {
+    background-color: #000000;
+  }
+  .inactive {
+    background-color: #ffffff;
+  }
+
+</style>
+</head>
+
+<body>
+</body>
+<script>
+  const width  = 100
+  const height = 100
+  const rule   = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+  function isActive() {
+    const rowList = document.querySelectorAll('.row')
+    if (rowList.length === 1)
+      return Math.random() * 2 | 0 ? 'active' : 'inactive'
+    else {
+      // apply rules here
+      return 'active'
+    }
+  }
+
+  function makeRow() {
+    const row = document.createElement('div')
+    row.className = 'row'
+    document.body.appendChild(row)
+    for (let i = 0; i < width; i++) {
+      const div = document.createElement('div')
+      div.id = i
+      div.className = isActive()
+      row.appendChild(div)
+    }
+  }
+
+  for (let i = 0; i < height; i++) {
+    makeRow()
+  }
+
+</script>
+</html>
